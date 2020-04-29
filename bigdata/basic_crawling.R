@@ -1,6 +1,7 @@
 install.packages("mongolite")
 library("mongolite")
 library("stringr")
+
 url <- "https://www.clien.net/service/group/community?&od=T31&po=0"
 url_data <- readLines(url, encoding = "UTF-8")
 url_data
@@ -29,7 +30,7 @@ title
 #### 데이터 필터링(hit) ####
 hit_data <- url_data[str_detect(url_data,"<span class=\"hit\">")]
 hit_data
-hit <- str_extract(hit_data,pattern = "(?<=\">).*(?=</span>)")
+hit <- str_extract(hit_data,pattern = "(?<=\">).*(?=</span>)")[-1]
 hit
 
 #### 데이터 필터링(url) ####
